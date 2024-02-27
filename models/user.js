@@ -1,5 +1,7 @@
  const {Schema,model}=require('mongoose');
  const {createHmac,randomBytes}=require("crypto");
+const { get_token } = require('../utilitis/jwt');
+
 
 
 
@@ -45,7 +47,7 @@ next(); //call next function which was save
 
 // ceate virtual function in schema for compare password for user 
 user_schema.static(
-    "matchPassword",                    //this was function name in model
+    "matchPasswordGenerateToken",                    //this was function name in model
     async function (email, password) {
       const user = await this.findOne({ email });
       if (!user) throw new Error("User not found!");
@@ -61,7 +63,10 @@ user_schema.static(
         throw new Error("Incorrect Password");
         
         else{
-            return {...user._doc,password:undefined,salt:undefined}
+            const token=await get_token(user._doc)
+            // return {...user._doc,password:undefined,salt:undefined}
+            return token
+        
         }
      
     }

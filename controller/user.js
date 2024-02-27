@@ -30,8 +30,10 @@ const login_controller=async(req,resp)=>{
     //         console.log("unsuccess");
     //      }
     //  
-    const user=await user_model.matchPassword(email,password)
-    console.log(user)
+    const token=await user_model.matchPasswordGenerateToken(email,password)
+    // console.log(user)
+    console.log(token);
+    resp.cookie('token',token);
     resp.redirect('/')
     } catch (error) {
         console.log(error);
