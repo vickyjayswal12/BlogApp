@@ -34,7 +34,7 @@ const { get_token } = require('../utilitis/jwt');
   
 }, { timestamps: true })  //timestamp for created at and updated at
 
-//before save, this function call and hash user password
+//before save, this function call and hash user password(luike a middleware)
 user_schema.pre('save',function(next){
 const user=this  // at time of save whih object went to save reference that object 
 if(!user.isModified('password')) return;

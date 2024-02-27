@@ -37,6 +37,9 @@ const login_controller=async(req,resp)=>{
     resp.redirect('/')
     } catch (error) {
         console.log(error);
+        resp.render('login',{
+            error:"incoorect password or username" //send in locals object in views
+        })
     }
     
 }
