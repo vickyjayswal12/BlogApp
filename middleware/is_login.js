@@ -4,7 +4,7 @@ const islogin=async(req,resp,next)=>{
 
     if(!req.cookies.token)
     {
-        resp.redirect('singin')//always redirct same paths singin like/user/singin
+        resp.redirect('signin')//always redirct same paths singin like/user/singin
     }
     else{
         try {
@@ -16,7 +16,7 @@ const islogin=async(req,resp,next)=>{
          catch (error) {
             if(error="TokenExpiredError")
             {
-                resp.redirect('singin')
+                resp.redirect('signin')
 
             }
             console.log("error",error);
