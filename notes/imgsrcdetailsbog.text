@@ -1,0 +1,14 @@
+in blog_details.ejs file img src have 
+<img src=<%=blog.coverImgUrl%>  class="card-img-top" alt="..."> (withouth / this try acces to same root from this ejs send)
+the it will try to acces this url 
+http://localhost:5000/blog/1709101292927-profile.jpg so that it cant acces img 
+
+for access img rquire this url--http://localhost:5000/1709101292927-profile.jpg
+it will done using this
+<img src="/<%=blog.coverImgUrl%>" class="card-img-top" alt="...">
+
+
+//in rout
+
+from we try to get blog id from path params (/:id) but not work in paramsget filename of blog
+but using query params work proper

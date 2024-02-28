@@ -2,9 +2,9 @@ const { varify_token } = require("../utilitis/jwt");
 
 const getuser=(cookieName)=>
 {
-    console.log("middleware",cookieName);
+    // console.log("middleware",cookieName);
     return async (req,resp,next)=>{
-        console.log(req.cookies[cookieName]);
+        // console.log(req.cookies[cookieName]);
         if(!req.cookies[cookieName])
         {
             return next();
@@ -12,7 +12,7 @@ const getuser=(cookieName)=>
         else{
             try {
                 const user= await varify_token(req.cookies[cookieName]);
-                 console.log("user",user)
+                //  console.log("user",user)
                  req.user=user
                   next();
                 }

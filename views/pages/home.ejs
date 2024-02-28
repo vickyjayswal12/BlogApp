@@ -2,25 +2,35 @@
 <html lang="en">
 <head>
     <%-include('../partial/head') %>
+    <style>
+      /* Custom CSS to set the height of card images */
+      .card-img-top {
+          height: 200px; /* Adjust the height as needed */
+          object-fit: cover; /* Ensures the image covers the entire area */
+      }
+  </style>
     <title>Document</title>
 </head>
 <body>
     <%-include('../partial/nav') %>
 <div>
-    <%=JSON.stringify(user)%>
-    <%=JSON.stringify(allblog)%>
-  <div class="container">
-    <%allblog.forEach((blog)=>{%>
-        <div class="card" style="width: 18rem;">
-            <img src=<%=blog.coverImgUrl%>  class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><%=blog.title%></h5>
-              <a href="/blog/<%=blog.title%>" class="btn btn-primary">View More</a>
-            </div>
-          </div>
-   <% }) %>
-   
-  </div>
+
+  <div class="container mt-4">
+        <div class="row">
+            <% allblog.forEach((blog) => { %>
+                <div class="col-md-4"> <!-- Use col-md-4 to make each card take up 1/3rd of the row -->
+                    <div class="card mb-4"> <!-- Add margin-bottom to create some space between the cards -->
+                        <img src="<%= blog.coverImgUrl %>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= blog.title %></h5>
+                            <p><%= blog._id %></p>
+                            <a href="/blog/?id=<%= blog._id %>" class="btn btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
 
 </div>
 
