@@ -63,6 +63,7 @@ user_schema.static(
         throw new Error("Incorrect Password");
         
         else{
+            console.log("check",user._doc);
             const token=await get_token(user._doc)
             // return {...user._doc,password:undefined,salt:undefined}
             return token

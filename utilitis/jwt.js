@@ -5,13 +5,13 @@ const get_token=async(user)=>
 {
     const token=await jwt.sign(
         {
-          _id:user.id,
+          _id:user._id,
           fullName:user.fullName,
           email:user.email,
           ProImgUrl:user.ProImgUrl,
           role:user.role
 
-        },secret_key,{expiresIn: '5m' }
+        },secret_key,{expiresIn: '1h' }
     );
     return token;
 }

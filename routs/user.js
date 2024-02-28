@@ -16,6 +16,6 @@ rout.get('/profile',islogin,(req,resp)=>{
     resp.send("profile")
 })
 rout.get('/logout',(req,resp)=>{
-    resp.clearCookie("token").redirect('/')
+    resp.clearCookie("token").redirect('/') //clear toen from cookie and redirect to home (if not write )
 })
 module.exports=rout;
