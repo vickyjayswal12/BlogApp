@@ -8,7 +8,7 @@ const addnew_controller=async(req,resp)=>{
         {
           title,
           body,            //object destructuring
-          coverImgUrl:`/public/uploads/${req.file.filename}`,
+          coverImgUrl:`${req.file.filename}`,
           createdBy:req.user._id
         }
     )
