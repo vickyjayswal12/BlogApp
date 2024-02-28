@@ -1,0 +1,3 @@
+in nodejs have express so that img src cant access impg url so that we have to make static directory where all img store into server and into server pass only img(imgfilename) name
+
+and make viemor which all /blog/blogid api whrea send new page which was related to that blog
