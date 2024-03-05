@@ -1,7 +1,7 @@
 const {Router}=require('express');
 const multer=require('multer');
 const path=require('path');
-const { addnew_controller, getblogBYId } = require('../controller/blog');
+const { addnew_controller, getblogBYId, comment_controller } = require('../controller/blog');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) { //cb ==callback  //here file which use to control file into request and file not comes in express(req,resp) so that we use multer or expressfile lib
@@ -26,7 +26,9 @@ rout.get("/addnew",(req,resp)=>{
 
 rout.post("/addnew",upload.single("CoverImg"),addnew_controller)
 
-//get blog in details by help of blog id
+//get blog in details by help of blog id which was pass into query params
 rout.get("/",getblogBYId)
+
+rout.post("/comment/:blogId",comment_controller)
 
 module.exports=rout

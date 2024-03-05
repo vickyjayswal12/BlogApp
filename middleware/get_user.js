@@ -13,7 +13,7 @@ const getuser=(cookieName)=>
             try {
                 const user= await varify_token(req.cookies[cookieName]);
                 //  console.log("user",user)
-                 req.user=user
+                 req.user=user  //set user in every request if user login
                   next();
                 }
              catch (error) {

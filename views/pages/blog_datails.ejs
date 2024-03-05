@@ -1,25 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%-include('../partial/head') %>
     <title>blog</title>
-</head>
-<body>
+  </head>
+  <body>
     <%-include('../partial/nav') %>
-<div>
+    <div>
+      <div class="container mt-4">
+        <h1><%=blog.title%></h1>
+        <br />
+        <img
+          src="/<%=blog.coverImgUrl%>"
+          alt="..."
+          height="300px"
+          width="500px"
+        />
+        <br />
+        <br />
+        <pre><%=blog.body%></pre>
+      </div>
+    </div>
+    <div class="container">
+      <img
+        src="<%=blog.createdBy.ProImgUrl%>"
+        alt=""
+        width="50px"
+        height="50px"
+      />
+      <%=blog.createdBy.fullName%>
+    </div>
 
-  <div class="container mt-4">
-<h1>   <%=blog.title%></h1>
-<br>
-<img src="/<%=blog.coverImgUrl%>"  alt="..." height="300px" width="500px">
-<br>
-<br>
-<pre><%=blog.body%></pre>
+    <div class="container mt-4">
+      <h1>Comment</h1>
+      <form action="/user/signin" method="post">
+        <div class="mb-3">
+          <input
+            type="text"
+            name="content"
+            class="form-control"
+            id="content"
+            placeholder="enter your comment"
+          />
+    
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            name="password"
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
 
-  </div>
-
-</div>
-
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
     <%-include('../partial/script') %>
-</body>
+  </body>
 </html>

@@ -1,0 +1,17 @@
+locals(object) store all passed variable through backend 
+some time we have not pass some variable from backend then try to print that variable then ejs throw error
+like 
+<%=age%>//throw error
+//for condition
+<%if(age){%> //it will throw error 
+    <%=age%> 
+
+<%} %>
+
+but by using locals if not pass that vaiable from backend than this will not throw error it print simlpy undefined
+<%=locals.age%>//throw error
+//for condition
+<%if(age){%> //it will throw error 
+    <%=locals.age%>
+
+<%} %>

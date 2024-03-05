@@ -1,4 +1,5 @@
 const Blog = require("../models/blog");
+const Comment = require("../models/comment");
 
 const addnew_controller=async(req,resp)=>{
     // console.log(req.body);
@@ -8,7 +9,7 @@ const addnew_controller=async(req,resp)=>{
         {
           title,
           body,            //object destructuring
-          coverImgUrl:`${req.file.filename}`,
+          coverImgUrl:`${req.file.filename}`, //req.file.filename get using multer 
           createdBy:req.user._id
         }
     )
@@ -20,8 +21,9 @@ const addnew_controller=async(req,resp)=>{
 const getblogBYId=async(req,resp)=>{
   try {
     // console.log(req.query.id);
-    const blog= await Blog.findById(req.query.id)
+    const blog= await Blog.findById(req.query.id).populate('createdBy') //(populate) get user details who is created this blog
     // resp.send(res)
+    // console.log("blog",blog);
     resp.render('blog_datails',{
       user:req.user,
       blog
@@ -32,4 +34,16 @@ const getblogBYId=async(req,resp)=>{
 
 
 }
-module.exports={addnew_controller,getblogBYId}
+
+const comment_controller=(req,resp)=>{
+ const {content}=req.body;
+ const blogId=req.params.blogId;
+ console.log("blogid",req.params.blogId);
+  const res=Comment.create({
+    content,
+    blog_id:blogId,
+    createdBy:req.user._id
+  })
+resp.redirect(`/blog/?id=blogId`)
+}
+module.exports={addnew_controller,getblogBYId,comment_controller}

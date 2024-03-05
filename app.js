@@ -15,6 +15,9 @@ connection()
 // console.log(path.join(__dirname,"/public/uploads"));
 //app level middle
 app.use(express.static(path.join(__dirname,"/public/uploads")))
+app.use(express.static(path.join(__dirname,"/public")))
+
+
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,"/views/pages"))
 app.use(express.urlencoded({extended:false}))
