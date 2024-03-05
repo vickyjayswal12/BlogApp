@@ -1,3 +1,4 @@
 in nodejs have express so that img src cant access impg url so that we have to make static directory where all img store into server and into server pass only img(imgfilename) name
 
-and make viemor which all /blog/blogid api whrea send new page which was related to that blog
+and make viemore button which all /blog/blogid api whrea send new page which was related to that blog
+ <a href="/blog/?id=<%= blog._id %>" class="btn btn-primary">View More</a> 

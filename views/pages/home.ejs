@@ -9,7 +9,7 @@
           object-fit: cover; /* Ensures the image covers the entire area */
       }
   </style>
-    <title>Document</title>
+    <title>BlogApp</title>
 </head>
 <body>
     <%-include('../partial/nav') %>
@@ -23,8 +23,8 @@
                         <img src="<%= blog.coverImgUrl %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%= blog.title %></h5>
-                            <p><%= blog._id %></p>
-                            <a href="/blog/?id=<%= blog._id %>" class="btn btn-primary">View More</a>
+                           
+                            <a href="/blog/?id=<%= blog._id %>" class="btn btn-primary">View More</a> 
                         </div>
                     </div>
                 </div>
