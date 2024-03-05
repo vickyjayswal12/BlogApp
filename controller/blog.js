@@ -24,9 +24,14 @@ const getblogBYId=async(req,resp)=>{
     const blog= await Blog.findById(req.query.id).populate('createdBy') //(populate) get user details who is created this blog
     // resp.send(res)
     // console.log("blog",blog);
+    const comments=await Comment.find({
+      blog_id:req.query.id
+    }).populate("createdBy")
+    console.log("comments",comments);
     resp.render('blog_datails',{
       user:req.user,
-      blog
+      blog,
+      comments
     })
   } catch (error) {
     console.log("err",error);
@@ -36,6 +41,7 @@ const getblogBYId=async(req,resp)=>{
 }
 
 const comment_controller=(req,resp)=>{
+  console.log("comment",req.body);
  const {content}=req.body;
  const blogId=req.params.blogId;
  console.log("blogid",req.params.blogId);
@@ -44,6 +50,6 @@ const comment_controller=(req,resp)=>{
     blog_id:blogId,
     createdBy:req.user._id
   })
-resp.redirect(`/blog/?id=blogId`)
+return  resp.redirect(`/blog/?id=${blogId}`)
 }
 module.exports={addnew_controller,getblogBYId,comment_controller}
